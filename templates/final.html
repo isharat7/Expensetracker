@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=date], select, textarea {
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #green;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #green;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #99FFFF;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<center><h2><b>TOTAL EXPENDITURE</b></h2></center>
+<div class="container">
+   <form action="/add_range" method="post">
+    <br>
+    <label for="startdate">Start Date</label>
+    <input type="date" id="startdate" name="startdate" placeholder="DD-MM-YYYY " required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" title="Enter a date in this format DD-MM-YYYY">
+    <br>
+    <br>
+    <label for="enddate">End Date</label>
+    <input type="date" id="enddate" name="enddate" placeholder="DD-MM-YYYY " required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" title="Enter a date in this format DD-MM-YYYY">
+    <br>
+    <input type="submit" value="submit">
+    </form>
+    <script>
+    {% if request.args.get('msg') %}
+        alert('{{request.args.get("msg")}}');
+    {% endif %}
+    </script>
+<br>
+<br>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px blue;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2>EXPENSE LIST</h2>
+
+<br>
+<br>
+<table id="t01">
+	<thead>
+  <tr>
+  	<th>Sl No.</th>
+    <th>StartDate</th>
+    <th>EndDate</th>
+    <th>Expenses</th> 
+  </tr>
+  </thead>
+
+ <tbody>
+            {%for range_amnt in range_amnts %}
+            <tr>
+                <td>{{range_amnt[0]}}</td>
+                <td>{{range_amnt[1]}}</td>
+                <td>{{range_amnt[2]}}</td>
+                <td>{{range_amnt[3]}}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+<br>
+<br>
+<table>
+	<thead>
+  <tr>
+    <th>Your overall total expenditure is:</th>
+   
+  </tr>
+  </thead>
+
+  <tbody>
+            
+            <tr>
+                <td>{{total_amnts}}</td>
+                
+            </tr>
+            
+        </tbody>
+</table>
+<br>
+<br>
+<h><a href="/"><input type=submit value="Click here to logout" autofocus size="100"></a></h>
+</div>
+</body>
+</html>

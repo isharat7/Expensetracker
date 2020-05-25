@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #green;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #green;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #99FFFF;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<center><h3><b>EXPENSE TRACKER</b></h3></center>
+<center><h2><b>EDIT EXPENSES</b></h2></center>
+
+<div class="container">
+  <form action="/edit_expenses">
+    <label for="ID">ID</label>
+    <input type="text" id="ID" name="ID" placeholder="Enter the ID no of the expense that you want to modify..">
+    <br>
+    <tr>
+    <label for="newamount">NewAmount</label>
+    <input type="text" id="newamount" name="newamount" placeholder="Enter new amount..">
+    <br>s
+    <tr>
+    <td>NewCategory</td>
+    <td><select name="newcategory">
+    <option value="-1" selected>select your category..</option>
+    <option value="Shopping">SHOPPING</option>
+    <option value="Bills">BILLS</option>
+    <option value="Health">HEALTH</option>
+    <option value="Food">FOOD</option>
+    <option value="Books">BOOKS</option>
+    <option value="Cosmetics">COSMETICS</option>
+    <option value="Others">OTHERS</option>
+    </select></td>
+    </tr>
+    <br>
+    <label for="newdate">NewDate</label>
+    <input type="date" id="newdate" name="newdate" placeholder="DD-MM-YYYY " required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" title="Enter a date in this format DD-MM-YYYY">
+    <br>
+    <input type="submit" value="submit">
+
+  </form>
+</div>
+<script>
+    {% if request.args.get('msg') %}
+        alert('{{request.args.get("msg")}}');
+    {% endif %}
+  </script>
+</body>
+
+</html>

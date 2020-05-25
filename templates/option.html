@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EXPENSE TRACKER</title>
+<style>
+.container {
+  border-radius: 5px;
+  background-color: #99FFFF;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 class="logo">SELECT OPTIONS</h1>
+        
+        </div>
+        <div class="container">
+            <form action="/option" method="post">
+        <nav>
+            <ul>
+                <li>
+                     <a href="/Add expenes">
+                        Add expenses
+                </li>
+                <li><a href="/Edit expenses">
+                        Edit expeses
+                 </li>
+                <li>
+                    <a href="/Delete expenses">
+                        Delete expenses
+                    </a>
+                    </li>
+                
+            </ul>
+        </nav>
+</form>
+</div>
+    </header>
+    <script>
+    {% if request.args.get('msg') %}
+        alert('{{request.args.get("msg")}}');
+    {% endif %}
+    </script>
+</body>
+</html>
